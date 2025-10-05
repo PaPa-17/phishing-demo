@@ -1,0 +1,53 @@
+# .gitignore for PhishGuard Project
+
+# Node.js/React (frontend) ignores
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python (backend) ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+env.bak/
+*.egg-info/
+*.egg
+
+# Backend specific
+instance/
+*.sqlite
+
+# Misc
+*.swp
+*~
+# Ignore macOS Finder custom icons
+Icon?
+
+# Local configuration files (if any)
+config.py
+settings.py
