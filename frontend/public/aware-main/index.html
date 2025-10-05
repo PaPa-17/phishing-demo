@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Awareness</title>
+    <!-- Favicon -->
+     <link rel="icon" type="image/x-icon" href="https://drive.google.com/file/d/1HYVKpAVyfeBo1y3vDWMSjjWT5AKwBplp/view?usp=drive_link">
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to the external JavaScript file, deferred to load after the HTML -->
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            <h1>Phishing Awareness</h1>
+        </div>
+    </header>
+
+    <div class="room-info">
+        <h2>Your Progress</h2>
+        <div class="stats">
+            <div class="stat-box">
+                <h3 id="score">0</h3>
+                <p>Correct Answers</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="total-questions">0</h3>
+                <p>Total Questions</p>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+        <button id="reset-progress" class="btn btn-reset">Reset Progress <i class="fas fa-rotate-left"></i></button>
+    </div>
+
+    <div class="tasks">
+        <!-- Task 1 -->
+        <div class="task active" id="task1" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Identify Suspicious Emails</span>
+                <span class="task-status"><span class="unlocked-badge">Unlocked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Understanding Email Phishing</h3>
+                    <p>Email phishing is the most common form of cyber attack, where criminals send fraudulent messages designed to trick people into revealing sensitive information or installing malware. These emails often appear to come from reputable companies or individuals you know.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://www.msvu.ca/wp-content/uploads/2017/10/2024-01-09-email-verification-phish.png" alt="Example of a phishing email" width="600">
+                        <div class="caption">Example of a phishing email attempting to steal login credentials</div>
+                    </div>
+                    
+                    <h4>Common Characteristics of Phishing Emails:</h4>
+                    <ul>
+                        <li><strong>Urgent or threatening language</strong> that creates a sense of panic</li>
+                        <li><strong>Generic greetings</strong> like "Dear Customer" instead of your name</li>
+                        <li><strong>Spoofed sender addresses</strong> that mimic legitimate companies</li>
+                        <li><strong>Requests for sensitive information</strong> like passwords, Social Security numbers, or credit card details</li>
+                        <li><strong>Suspicious attachments</strong> or links to fake websites</li>
+                        <li><strong>Poor spelling and grammar</strong> that legitimate organizations typically avoid</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Did You Know?</h4>
+                        <p>According to the FBI's Internet Crime Complaint Center, phishing was the most common type of cyber crime in 2022, with over 300,000 victims reporting losses exceeding $52 million.</p>
+                    </div>
+                    
+                    <h4>How to Protect Yourself:</h4>
+                    <ol>
+                        <li>Never provide personal information in response to an unsolicited request</li>
+                        <li>Verify the sender's email address carefully, not just the display name</li>
+                        <li>Hover over links to see the actual URL before clicking</li>
+                        <li>When in doubt, contact the company directly using official contact information</li>
+                        <li>Use multi-factor authentication to protect your accounts</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which of these is most suspicious?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">An email from your boss with your name in the subject.</div>
+                        <div class="option" data-correct="true">An email from an unknown sender asking for your password.</div>
+                        <div class="option" data-correct="false">An email from HR about the upcoming company payroll.</div>
+                    </div>
+                    <div class="feedback correct">Correct! A legitimate service will never ask for your password via email.</div>
+                    <div class="feedback incorrect">Not quite. An unsolicited request for a password is a huge red flag.</div>
+                </div>
+                 <div class="quiz">
+                    <div class="question">What is the primary goal of most phishing emails?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">To steal sensitive information like passwords or financial details.</div>
+                        <div class="option" data-correct="false">To provide you with important security updates from a trusted source.</div>
+                        <div class="option" data-correct="false">To sell you a legitimate product or service.</div>
+                    </div>
+                    <div class="feedback correct">Correct! The main objective is to trick you into revealing information they can exploit.</div>
+                    <div class="feedback incorrect">Incorrect. Phishing is about theft, not legitimate business or security.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task locked" id="task2" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Recognize Fake Websites</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Identifying Fake Websites</h3>
+                    <p>Phishing emails often contain links to fake websites designed to look identical to legitimate ones. These sites are created to steal your credentials or install malware on your device when you interact with them.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://www.memcyco.com/wp-content/uploads/2024/09/image7.jpg" alt="Example of a fake website" width="600">
+                        <div class="caption">Fake websites often look nearly identical to legitimate ones</div>
+                    </div>
+                    
+                    <h4>How to Spot Fake Websites:</h4>
+                    <ul>
+                        <li><strong>Check the URL carefully:</strong> Look for misspellings, unusual characters, or wrong domain extensions</li>
+                        <li><strong>Look for HTTPS:</strong> Legitimate sites use HTTPS (not HTTP) to encrypt data</li>
+                        <li><strong>Examine the padlock icon:</strong> Click on it to view security certificate details</li>
+                        <li><strong>Poor design quality:</strong> Many fake sites have low-quality images, layouts, or functionality</li>
+                        <li><strong>Suspicious content:</strong> Unexpected pop-ups, download prompts, or requests for unnecessary information</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Typosquatting Alert</h4>
+                        <p>Cybercriminals often register domains with common misspellings of popular websites (like "gooogle.com" instead of "google.com") to trick users. This practice is called "typosquatting" or "URL hijacking."</p>
+                    </div>
+                    
+                    <h4>Website Security Check:</h4>
+                    <ol>
+                        <li>Always check the URL in the address bar before entering any information</li>
+                        <li>Look for the padlock icon indicating a secure connection</li>
+                        <li>Verify the website's security certificate if you're unsure</li>
+                        <li>Use a website reputation service if available in your browser</li>
+                        <li>Bookmark important sites instead of clicking links in emails</li>
+                    </ol>
+                    
+                    <div class="img-container">
+                        <img src="https://cwatch.comodo.com/images/how-to-tell-if-a-website-is-secure.png" alt="How to identify a safe website" width="600">
+                        <div class="caption">Key indicators of a safe website: HTTPS and padlock icon</div>
+                    </div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which URL is most suspicious?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">http://paypa1.com/login</div>
+                        <div class="option" data-correct="false">https://paypal.com/login</div>
+                        <div class="option" data-correct="false">https://www.paypal.com</div>
+                    </div>
+                    <div class="feedback correct">Correct! The domain uses '1' instead of 'l' and lacks `https`.</div>
+                    <div class="feedback incorrect">Incorrect. Look closely at the spelling and the `http` vs `https`.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">What does "HTTPS" at the beginning of a URL indicate?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">The website is guaranteed to be 100% safe and legitimate.</div>
+                        <div class="option" data-correct="true">The connection between your browser and the website is encrypted.</div>
+                        <div class="option" data-correct="false">The website loads faster than one with just "HTTP".</div>
+                    </div>
+                    <div class="feedback correct">Correct! HTTPS means the connection is secure and encrypted, but you still need to verify the domain itself is correct.</div>
+                    <div class="feedback incorrect">Incorrect. HTTPS is about encryption, not a guarantee of legitimacy or speed.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task locked" id="task3" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Detect Suspicious Attachments</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Dangerous Email Attachments</h3>
+                    <p>Email attachments are a common method for delivering malware, including viruses, ransomware, and spyware. Cybercriminals often use social engineering to trick users into opening malicious attachments.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://gorazy.com/blog/images/dhl-zip-file-malicious-spam.jpg" alt="Example of a malicious email attachment" width="600">
+                        <div class="caption">Malicious emails often disguise dangerous attachments as legitimate documents</div>
+                    </div>
+                    
+                    <h4>Risky File Types to Avoid:</h4>
+                    <ul>
+                        <li><strong>Executable files:</strong> .exe, .msi, .bat, .cmd, .scr</li>
+                        <li><strong>Script files:</strong> .js, .vbs, .ps1, .jar</li>
+                        <li><strong>Compressed files:</strong> .zip, .rar (may contain malicious executables)</li>
+                        <li><strong>Office documents with macros:</strong> .docm, .xlsm, .pptm</li>
+                        <li><strong>PDF files:</strong> Can sometimes contain malicious scripts or links</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Ransomware Threat</h4>
+                        <p>Approximately 94% of malware is delivered via email, often through malicious attachments. Ransomware attacks frequently begin with an employee opening an infected attachment that encrypts the organization's data.</p>
+                    </div>
+                    
+                    <h4>Safe Attachment Practices:</h4>
+                    <ol>
+                        <li>Never open attachments from unknown senders</li>
+                        <li>Even with known senders, verify unexpected attachments before opening</li>
+                        <li>Use antivirus software to scan all downloads</li>
+                        <li>Keep software updated to protect against known vulnerabilities</li>
+                        <li>Enable file extension viewing in Windows to better identify file types</li>
+                    </ol>
+                    
+                    <div class="img-container">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAACQCAMAAAB3YPNYAAABhlBMVEX////o6Oju7u7k5OTp6ent7e3r6+vq6urT09PR0dEeLTrz8/Ph4eHX19crN0IzPkgXKDWPlJikqa1haG83Q01BTFXFyMokMj1+g4hudXs0PEk0PkUAS5oAfTIuOkRNVl+ZnaEASpT7kgCHi5F6f4WssLT/M0knPkgnO0kcRXGkOUkoT0N0VzgcXj6kbCglQ2UgWUB0O0glVUEAQpFniLPF0Nu6vL+YrsgAMYokWZvX4NtDdawAps+VlZWnx7QHUJjY4+4AcyWh0N9uwdn8jQC21+E5s9T98fGmt80AHCz0l5Xq1dftvMHssGs5j1qBoMXxdXLzhoP2qaf5zczwZWH3VGb5Q1fp2du90sbzh5H0f4qlxrL1r1v3pkHs1Lj1cn73WWl2q4v3s7HuTUcqQVlgPEhLR0IMSIXJN0mNYi5OPUgsSEVgTzz5R1pJdapUnXEDgT7zzaS+r6L8GjcwilLWtIv9oizquoHp4dWItZnr28b8sFQABx8GcTdxlL4AbA2Gx9vvW1ba/voyAAAbmUlEQVR4nO2dC3vbxpWGOcAAA4C4kAAIkEkFwiXhZrfdTVvasCVbspXYki2ptiypsWwnsaW03UuayNm42XXbzeWf7xlcSIAEQQyYteKnOvbDC0h9nHkxOHNmgDloNC7swi7swi7sXEyVJUmraZIkk7FKXRGqwsUq2lIqTlIjrX6FaFkSFWkpFWmMV+URGEa4iqGxRS95FaUq8UZmi1XEBAy/jEoKJlZhFylSqVuWDF6QIGBCBRNJ1kBqjJdHmIhgXBUTs0ZARRhXqbqKkBMhCGXAkPoqKRgNLaOijfHyCSHJNxdZ0Mw7liZScaqCRcq/GbjKIus7zfw+w2O8KFExK6jIeRWSAROrcO2FIsoQcXNVSKwyWCjidklORSRZvAkhbSFdM5C4PF48xoto6+e4Zt8zFpluOM3JfqelmeCNVbiOZ/yi1EDFlvMqOAMmUuFtz3in1AzDtTCXU8ngFSMV1fCM90oNVHrilEpNvHm+U3i5GO/7fyix9/9gQHkzfKE4ebxchPed35TaH0ElzzeLV4xUeNt495el9jklk+M7qwJ4//SrUvvTDN8ivFIlvDm+hXj/8LNS+zdjiu8U3mhb5xd/vFxq/w7t1+tk+ebBcBHed367Umq/pu23h7I+FGtTKqrx3n/8vNR+RdvvMMu3sPUG4ayZg0F2s5TnW4j3vX8qtfcNo+N59oRvIV7vP/+51H4TqWT4FuP9/F9K7XPDtr1s+y3E6/35X0vtzx5VGQrleJv8rCFfUUI0fqsCXVme8C12Du+Wm6G3h26GbzHeBb73F4bu99wM30K8xkLfawcd4EtK8RoLfW+Hqkz4MuB1c3hl2nwnfAvxegu6WQCj9TJ8i/EuVHF9Kcu3GO8CFd0wHIfyFUvxLlDxDNsJafv9cfBO/EMRXr3vlJrpuW1NyrTfQry6Va7ie66vyT3ds6XmfLwLVODvDUcLKd8yvHqvvCyWboNKhm99vGAZ/1CMF4slxoW63gaFnpf2b3PwlolQFdeXI5WEbzHeIVem0uzqRihLYQf6N6EEb7dcpQd4QcU2Ur618Y5H1WV4UWboPGNiqBt2B4zGD1oJ3lkRDOF6qhJMVGx1Pt6eUFIUxAFeKmLTnr9ZgrdcpTdRGTSXwTuxZl28xHH1yKD1un6TAS9+/GQ35SuGrpeqKEGzJl6hrXiJiGGotfF2xyqezZ8zXoTbVmKMeMmT5y9SaYxSlb7nmnXxEq2XqEBXWhsvkScq54E3ngEYbxTiiSXR0ZnwYv73/Efj5oszKrXxIiLGM2LCQK+Pd6Iy1M8Br4iuXnv48J46VcYaeIWP9giaVnGXwJtKCwN3CbxjlfPAK169MaJ261oeDWHHy31xKtbHi9NDCNOP4fuTj34UvOhc8JIvR7cuURtdzfFlxYvQ88cf7dXHi49PTk5UUBX51ycPzk420KQ4by9ejFav3B7FeHNsmPGKOweXl3AO4rPNzc01jMSNl5uRrRyPxd5mvDcupa13Obxk74uvd5fAu7G5Anjx2suVlU34v/lybdLbvp14iSgKBPDeuhXhFQiZ4GHGi9EXlx9Pb2XGK77eXHn57Pj42YOTyd5+O/GSq/fAHoJdoXjDr7766tMJema8/EcvZkJqZrzC2ebmGUfPovEZMNXwTp0KS2z8E28YL7m6OkqN4v2vO2Bfpe2X3ffuff0C/xh4V16tTfWQFfHmz4SdN17xYdSlpQZ46dw+n8Jn9r3PL79YIjBLncMzeHq1gXNCFfHiQryNBj6f1ruao/uzv1C8dz6tiZfsfv3F4xf81GZmvAif0Y7twbFQI+4tYtsUG43zwIvV1YTrKrUbwTe08Y69Ayte4cnXT7iDJ1PNtwZenvJd2TzL+PGqeIUCvNRn1MerLIE3CshGV/7yO2ofx+f96uIljy9f3iXk+dTAgh0vDNqOH9AGfMaOt6Bz45bD27NqOwcctd7V/74TWXJa9c6n9fBC430qAOTnj5OrhWrjpbMgz2jwW2NYIc7i5ZqNZm28oWk6tbu2KyPaeD/Jn7b+n1q+l+xe/ugxR3YPn/z+ydOnT3b2dmPA7HijPxNgcLH5bHwgVI97i4KHZqrCjFelFzcUbK+G9yoNyfJ473xcKzDDtPGePn3x/OnO6e8PDvcOnn7xIhrBseM9RiLBhLxa2XxdA2+eb1PEmVCRGS9y6MUjWk28SLx35cqX1yjebz5O7Hdp42XBi0W8d/ny8yd7j7EgCo+fHkAl+Ccf0SiCHe/LV6831tZg7FbHOSBeU/n0hLuoamq2DbDjDc0wLPQO1QbF4CRFErXeT8D+Sq+vrDFqE/mDF5c/2o2upaR/SPaePzk4eP4FqoX3FZ3NWaHB7yTIq4yXyFPXOWYDRXbnEIQIBUV9G8N0euwcoHP7tNaEJCGnXzzduZyNGIi4u3dw+pjROcB4YiXBS+3BWo0JSTx9KVNmZF0Hb6BqS7TeCd47H39VDy/hnz9/zF8+yM+q0DmDOAiojFcAvC/XMOaPT87Ozk5qDSuon8pbtlDseOllfYFa8AFz6/3mb3c+zW2vhhc/fnEgkBdPZyYbEquKl4jkbGXlAVWEn4B/uV19XjNmvOY4RXRZzlZ89fNoMHznb/nCVMMrPj3lxKfP5558roiXf3D2YCUbK0yBOS+84FsKNzO0XvLX333yzScffzW9uQpezL/YPXz+FE3PojPixXzUnb1am7OXzg/vHGM6EU9ooDlNqFrrJQfPYRw8/8KJqnjp2Ymz43l76a3GW2wVuzYxc+lTbbwIrR0fr83s4Qu8i6wqXpyJuAvAXOAtth/lMpILvPPsHx0vposL6SNKH1nxYpJIkDj4jdY4jqc12PBijIocBcOwIhEgKFMiZrz02+kzfZm+Y8bLa5qmYlHVNNhKX7LjpQrQw1ElHosIRxcZp0JseHlaDFGVZT7fy1XGSwXoklZJo6c9aIky/WV1vHIYOirAdOKRteqEcvROZsQLDD3dsCSAEHKh6zrM1zlgZHu616d/7em2FYqCCS+UIfN0evRlXZcF33ZdO8h9UBUvcRRPJkKg6PAUXWNs96TJvFtFvGrg++u+KfEIXtCXquybKnLggR2v0bddixsqlthTsrVlwNvv6IYWuobVoXvJdG3LatfE68my6/Us3ak1KIZfo3h7et81BZGWCOrGihc4hpoGMClemR6KPB/6oWr6MqqBVwpcQ5V0z/d0OVOp6njdQDYUJ3RtVbVgT5lKv9nMVJgNrxQqRtjU8s6XCa+oGoYPVIXQ7SDT7YwdXlW8wBJcDM1EEPjU1yB62sI3/cx5Cwa8QU+3Edd1PXeQrSwD3nZbdwGvoXK+2+ehRoOBI9ZtvZqhe0Mp75OZ8HKB29cMTwJ3ZZuWO/mJqs5BAo9gAmGKN1qLCchlP+MamPC6rusLRLM9W8sekdXxGrqi9OihqIFj6ABer3XfF+ri5Zy+Sw/x2nibQ7eH+opJewNFt1Rm38s7JvW5Tup7w7j5BqgWXqsbCnT9jNvjslVi8L3W0OQF6hy4IXUObgf2eG3fizkh6OQPJDa8asczbMOzaOsd6B2NHS9S5RAIa4nvpa02BM4yc2BGIweJE6Pfro1XCZoCFumh2NWVgPreyXQtu+8NhqHTV/zaeCU4jPp9QAydbUe1IIZh9L2849AQF9BGvjfiDaFDNnCojldJgjGh16qJ12iZAl1q1XJbLW+ABbPVn0zb1sB7v9VS+lpd52Bow1aH8JrXMsOWoTpuK0hLUxUveFxNlcyo9canicE1ONQRs0YOWGu3416aBO18rFl5WOG36Q4icrvtB46IRaftT9iw4MVN6r9Vszsw1fy8etVL+JqhYms+VARjeJTbviqabX+sUhGvFrlen57GTPCGNGrQMpFZ1VEbHq+4EoV8lSrjFWNPgONcLPCHWSGWpSvqsO/2RfhzUag1KMYaCFg4rgiUitDlL5lqVcWLVCeOF3gYsEW8w1Cj8XDylgHvfHvjUzpEu9/qOIWng6rhJfLf5wkw4c3OOaTvk61VnIOQz/4zxzi5HC9XTaUc77A5UeEESULNQpXmgmWDzYlASama3TcwY+Z12tWs6xXijerU8foVVYbxotfiXDqVVax40aswhVeI8HpWRZV+vOi1OJcOC161EK8QZyPRK1q8pnheJqjKKsos3nEmKK+iiGekeFFOhYvTZVRVSfHmEm2hGniTP5nNY+aXZ+7Ip/FwokOtII9ZhQxkYzOkSKUgA1m3ukirFx/gJI+XWo+hLEMuUcnijY8CgZRmqMhZ5CLpvs5k4Yv+XBDU2ZSK80yl16BNZeGLVUQGFT5KgQcq4yx8KFEhDCo4Vsln4YtUcHURjaQqE7z0Kr94eTnJPU0/T2+OZuozeGMRhn1EmcQy2RyS7CppWbLZH5lV0qKMsz8upzLBKycJcuqY7CR4teVUkjyq0hIqspxmQJV/QioXdmEXdmEXdmEXdmEX9lOxn0TcKyyvMok1fwrRszzGOx61kcU2k+N+ZtRWT2V61FZBZSbfPj8zaqulMjtqW0Ylmi2IM9wvnsAWZ3P2o7zK9HmAIsPCjMrUnIPILVYRZsoyM+dQ4cJGbqYsM3MOi0XoKYucSi7zf5qzX2ktMjucydk/PWM2uL9I5L41NSddMGPmLyxKq+MszPw/WKzS4xdm/rcW1yiYqlBuxiyZqbX0Bbma3zE8PczllBfIzHxvW1+U+N+zNJ7LqhTP9y7KYe1N3z+gMPO/V2o08z+fV5nJ/N+0Ft7LQDc1gcur5PFykcy7vy21XxozfMnM2YpKeKU834KzFcZ775fa9P0D5pyt6Fil1gE0eb6zKpXwSnm+xXg/L8+T/7/GFN9CvMqiOX0X8Gb5Fif3XnT/gHdp5t4s36JzbZ4VlBoll+c7e66tabkLa2Rqco7vnNb761L7bZRtP8O3CG/QW2htesuiCd9ivBXuH6Dn7h9QiLdTXpK+YXe8LN8CvFx7cY1CiMUyfOfgXeh79UHbzfAtwFvl9C4fBZRjvnMy/y/yva6fv39Aceb/Rb7XDvq6bqGMygzeCjWi7SXDdx5et9R0wKsNMnyL8M6/DGAclyUJ7lO+czL/LyqL62vAd+x/52T+L1fxaOb/PrgrNAYzi3dxqIk1Kce3GK/eceQyCzzAq7X1Md/l8KZ851znUFoUydQBrzTUx3znXEZSrhJl/nf64B/w8ngnfOfh5UtFHE/vOo4zHPvf2ngT48vwimXDJHr/AB/Kkrl/QDHeshWdSKCZ/x0n7ED/hpbCm1Qo4TsPb+Hi99SQ4xk2GM22rzvN2ngRr6YmlOAtrVWU+T8pyzipfBHe4gXniZFupBLl7O8tgReNK8QvgVeeXHThtpfAO76DH6qP11HGZVHKrjErxYvbE5W5F0FVwTuebSD18fLITOIQy9CXwju2KniLbzKC/bQs5Zn/S/HyWjeN0OZn/q+Cd8J5CbypZ8ayV731JispceYNE158+0qR3UsmdLgFmf/L8aY1Ksv8P4MXZxeYTtVoKbxpmRjwirxGG6Cm0ak0QVXzpamAl1wdja5P22h0reLSlQxelHvKGWbAG1UC+NErsDHR8jlD3zBeQerbEuGHrtvFWAgMKz/TWA3vjdvT9vB6DbxyINElDUXJa6rjhUrYPSLKfcUOBZEf6kGuwm8WLwkhcJeEoOX7rZAMXL0e3sa0XWPHqwamSZNkFaa9Y2i9MGy1iNCzQ8tWJRiR5Fc01MCLptPpVMcr+oOuJ3FDXdXcAeoFnfPDS7NhJneknK1lZbyY75l9S1TtXtO/7zhW0FoW79rGxnFdvPBzXV3iLJvwcEhh0a6L9961a81G4/a1a1cbjea1a1fYfa8WULL0wZRm3C+Dc8A84NXcbjMEskK4BN6oFPj1d9+d4FyBWLq2CG/PxirFi2vjXR1dv91ofHv9+kNAfX10iRWvxgeZzITqdDNicA5Y7QBevdukDVesjxfxz45p4V6tbB5vbGQdBDPerq6BcxAxqo33xqXR7Qb3s0sjwHtjdOlLRrxq3GzB+cZP0+6XFa/aiZyDWBsv4jdeffcM8eh4c+UBPvnu7HgCmBUvHEKDQStcCu8I8F4bUby3R5dusPre5BbMEDloMWeHpjJFdfESoaub/Y6KxfB+HbzQcmkmyw3Ae7K5+Vp4DW8mgFnwCoOORohv21EChn6vJt4vKd5blyjebyHovceGN86TG+XCRHL0MqS5XeXxOjImvFYPE7Vn9B0Rft0ImQOzGO7KGe3RaJbmNV7deEBzhh4jZrz0JwEjNOP41RR8Frz3Rquro4dNgMwcOWjANzSjNY+aGQZAVo1bscaMl1YCA0ZVLBr+V8CLjl9trrw8iRor2oBmS5/R8dlLmpSVFW+S5A3HifSmE7VVxntldOn2jdGVG6OH90ajb2sEZnGTHSd8DoPYByerTFnwkmxVsMg8KEavv1tZOVkj9JfR2ebms+gFPj5bWfluA7HhFVVHgy0EOTCSxKIkTaUIqo731r2fje6tjq5FboIdb9SnOXFKVzOgHiLUZNrXIUa8oubQ4bCgyjzNfiurzIPitZOX1DdsgJcA3/ASWixae3ZGszC+Zmy94JtorgxRtVqmgInv1u3avh2tfjlahfjs21ujL2sMK9QkZIhdQkjfqigaaTC2XtF3FdsRhbDjSUTQrDqRA1p7TXu2V8f4WeQb0DN6i7MHz9ZYfS+2bKdnaHKn45oC3/Nqzjk0Gg9Hq7dG1xqrl1YvXb9aA6+TjtjiJ0eOwgh4J7PhJZo+dGyrabodWxMcu1NvUAzNFTqzZwR8A/RnGMKHqDEzRg5YNXpNsxVK3ZDmZBg4tQfF0d2Hmg16Iww6RGZ3DkG29QZaCC8d2scx+l4a6DZ7umCaA08T5W7tYQXijx9srK2svIRt6CQb9jLg1RQ6eDQ5zqHOQaw/KH44oj0aOIfR9Xu18KqBlEw6hLKpjScgAsbIQQhaYbPraiLX9TR6yq/+oBjiD4h3T2Lfnx0VM7RefRgPHiletMSg+N6VK1dugwuGp2YtvNBcEPW4gRa1E5WGahCiOYx4ofWGzaGuYoHiRUsMiqmdPUhj3Rz3ynj5jtX0WzB4jPHWH7VNWQ28fDxpNk63BG8klNa3Ol6oSNMyOCT+GHhRYWrv6l2b0FYGnT6PRef+UnibeauJNzpDnXkz+aD6hCTqd7rKgOLVI7y1BsXlxhA58O1+TxYRcfrR4LE3laq1Gl56r828Mc+YLbDqgRmRev0B+ErRtzQ8rtc54YWRRDy8welNxnKfVsO7WmTnhZdWJxqpxTXCiHnU9mPiLZhnYMS7IDHPG8dbXqA3jrfUquBFuMjOEW+ZvYV4S+0C7wXeC7xvH16cLvKKZ0jpY5I3ZVzgN4g3+nb8gs88vbV48d0PYkMffHCX0Ld3SbLl7jhn6GK8dFHk+GW6Y4iYbquKF4W+T0fEvOpHeRtp/kd2vLleNb7WLN/VVplOj6bMx/t7ss/ZzrWJH96MbEv84OaWKt69efMuibfc/HCcM3QhXnplsqTSe2JjQXUcjUbRmND7cGEmvKSrKC2lE2JJVxwEtO/b7HjjC5PjuwZgPrpgLr2wtzJeqATPS44GVQCjT1p0XzGNT+8tVhnv93epYfThzQ/R1s0PRLy1FW25Xb31cl3FdW2Ljvx821X0oUqw2tNpDrRKd3qd4HWt0HJtTTP0CK/SYcYrOuvU/OiXsbm+rhF+PbFkby/Ei2Rd0fDgftv8u+Iq8NRqtTEZtlqBqisyYsJ7N16hiG9DG765BQfS1k0+XllaHe/A7fQMwMIFim71PGUoCj2auz/JCM/QeoeiZLvBcnjNIAgAKwzWVGAaCiik72EjXxmv7alCu9WW/Z5u+Y6pe31e63huqNqexIb3+8TRgnu4eROaLOCNfO9tJrwWJ9uK37RcS+B83ZNkAMqJ7M5hiNS+Yi6H1+EELlyH5kvgcd3HWBSQv46EtFOohNc0e0qbcL7S5UTftRTZUaw6eCP7HpovvxX5W8AbGUPXRvEKnOUO1Y7rc6LjKU7g0hz3jF0bxUu0Tq71sl5GQvHSTNGRJzDXUbBOE9zz/vrkGt9KeFst3W0jDHgJPAxcs20PlTqtlwYP0GrF7ylTQLK1FbXe8d192fCaApEjvJNbRbD43p7Wdg3qe0NN4wGvrGnMeCMDn4C19UBw1ulsJDveIITWm+JtmR3L6g0ivPFUf3XfK0RBLrl7c+vDm1t85HsZ416Kt6mCc+D67rDJBborOy5N7SmyOgfX8BTdJJqn27YRhIpn23aaTJvR98oEfIMk8Os+PY3DjBd8bwZvMNR1c9CieIMoeKiON15XAa7he0LdA+DN3Za6Gt6+T3t8rq14bbPjWojv6P0gGGpMXRtu9/tWN0S8ZvXBQoc+9pnx0pSt8ropAFOIoyloZrxJ5IBw+/4Q8N43g5biDO4HqudC6Kix+F7qa7f47yFqiOJecSvaAmFadbzdlkvjVRHCMbcFr+g1BrbSarkaU2AWU5w3RGbAKwrSus9JEJ/Bv/WAYDa8vOb7Kr2tDaK3DqIPjuabaujLapSvvnrr/X4rtrvwn9C3EPzGxoBXpKOtkF4XQ3Dot4PoChktGNCiMeOda9WdQxiGPjjfYF0SMY16VVa8yQAt+5DcsC0SqOx70wkGEcfOFl6hdFVadbxRSpDYz0YZXOLru6Jw+s3jDeOuLUAQ9FKkJFh3RFa8C+0fdsYsWa1LcytFsUs8MFYz/Uk5XlQhqRQhovQm8HKVrLkg879QqUYcy5ROPJOTvs+vHCzFa3er2fD/c9FrtK3jdSqWpVe86FXg4sz/FVX6k8z/0yrsE5KzuXSEOBNUxQz3erxkuygTFDven1Dm/8JMUMx4pzNBpXnMXIZs++Oc/VN5zITSBAozeIVEZSaPGUPOfoiJpzOQpXnMGHL297g5ecyqJL6b4BUSlWzm/8qZ7zIyBVn4CpeuL7aizP/VbgwcG5mb+Z9FRUhVprPw1anRVOb/ytkfx5Y6+dkckuxWL4fkVFlQUeb/GiqzOSTrVCiTQ7I8gc4Cy2RAXUYlwSstp5LUaCmRH1nlwi7sDdn+/n7m3en21MdH8dP20f6j3Pbt05mvXliBAbXDnZ3GwXbj8BRebh/uH24/Om3sPNpuHOw1Gp/twOa97e0d+rXTbfja6WnjYGevsbuzDR8fPtprPDqAbx8+Ojzvmvwk7bP909ODxv7p0fYRQNvZPWps78O/o+390x3g/Vnj6HBvv7H92f7hzmHj6HR/d//RLnx3e2eHAv0BwO8+2v6Mfu+8a/KTNHAN0B6PDg52fzjYBbz7dBMABlyHR9uA7YfGDwcN2noB72enp4f7B9tH8IUdMMALm7d3tn+Ab+8v/q1/QDuAI/ywsbsP/mAfjvzt06PD3SM43IEmdbf7+4eNR4/B1cJe2G0c0nePGkf7p9T3nh4eHh4B7B3wMPD9867JW2qPZ9pliR/4PytWd9QAt4QLAAAAAElFTkSuQmCC" alt="Dangerous file types infographic" width="600">
+                        <div class="caption">Common dangerous file types used in cyber attacks</div>
+                    </div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which attachment is most dangerous to open from an unknown sender?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">invoice.pdf</div>
+                        <div class="option" data-correct="true">Update.exe</div>
+                        <div class="option" data-correct="false">report.docx</div>
+                    </div>
+                    <div class="feedback correct">Correct! An `.exe` file is an executable program that can install malware.</div>
+                    <div class="feedback incorrect">Incorrect. While any file can be a risk, `.exe` files are programs and thus the most directly dangerous.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">You receive an unexpected .zip file from a coworker. What should you do?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Open it immediately since you know the coworker.</div>
+                        <div class="option" data-correct="true">Contact the coworker via a different method (phone/chat) to verify they sent it.</div>
+                        <div class="option" data-correct="false">Reply to the email and ask if they sent it.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Their email could be compromised. Verifying through another channel is the safest action.</div>
+                    <div class="feedback incorrect">Incorrect. Replying to the email could mean you're communicating with the attacker. Always verify out-of-band.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 4 -->
+        <div class="task locked" id="task4" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Check Email Grammar & Tone</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Language Clues in Phishing Emails</h3>
+                    <p>Many phishing attempts originate from non-native English speakers or use automated translation tools, resulting in grammatical errors, awkward phrasing, and unusual tone. These language clues can help identify fraudulent messages.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://it.mercer.edu/images/phish_example.png" alt="Phishing email with poor grammar" width="600">
+                        <div class="caption">Phishing email showing poor grammar and spelling mistakes</div>
+                    </div>
+                    
+                    <h4>Language Red Flags:</h4>
+                    <ul>
+                        <li><strong>Spelling and grammar mistakes:</strong> Legitimate companies typically proofread communications</li>
+                        <li><strong>Unnatural phrasing:</strong> Awkward sentence structure or unusual word choices</li>
+                        <li><strong>Overly formal or informal language:</strong> Inconsistent with the sender's typical style</li>
+                        <li><strong>Urgent or threatening tone:</strong> Creates pressure to bypass your critical thinking</li>
+                        <li><strong>Generic greetings:</strong> "Dear valued customer" instead of using your name</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Psychological Manipulation</h4>
+                        <p>Phishers often use urgency, fear, or excitement to trigger emotional responses that override logical thinking. Messages about account suspension, unexpected prizes, or urgent requests from authority figures are designed to make you act without verifying.</p>
+                    </div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which email message is most likely a phishing attempt?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">"your account is suspend! click here imediatly to fix!!"</div>
+                        <div class="option" data-correct="false">"Hi team, please find the attached weekly report."</div>
+                        <div class="option" data-correct="false">"Your monthly statement is now available to view online."</div>
+                    </div>
+                    <div class="feedback correct">Correct! The poor grammar, spelling errors, and urgent tone are all huge red flags.</div>
+                    <div class="feedback incorrect">Incorrect. Professional communications are typically well-written.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">Why do attackers use an urgent tone like "Immediate Action Required"?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">To create panic and prevent you from thinking carefully.</div>
+                        <div class="option" data-correct="false">Because the information they are providing is genuinely time-sensitive.</div>
+                        <div class="option" data-correct="false">To make their email stand out in a crowded inbox.</div>
+                    </div>
+                    <div class="feedback correct">Correct! The sense of urgency is a psychological trick to bypass your rational judgment.</div>
+                    <div class="feedback incorrect">Incorrect. It's a tactic designed to make you act on emotion rather than logic.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 5 -->
+        <div class="task locked" id="task5" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Verify Sender Information</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Email Spoofing and Sender Verification</h3>
+                    <p>Cybercriminals often spoof email addresses to make messages appear to come from legitimate sources. Learning to verify sender information is crucial for identifying phishing attempts.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://esilo.com/wp-content/uploads/media-library/How-to-Check-Email-Headers-in-Gmail-for-Suspected-Phishing-e1624550260861.jpg" alt="How to view email headers" width="600">
+                        <div class="caption">Examining email headers can reveal the true sender information</div>
+                    </div>
+                    
+                    <h4>How to Verify Sender Authenticity:</h4>
+                    <ul>
+                        <li><strong>Check the email address, not just the display name:</strong> Display names are easily faked</li>
+                        <li><strong>Look for slight misspellings in the domain:</strong> "amaz0n.com" instead of "amazon.com"</li>
+                        <li><strong>Examine the reply-to address:</strong> It may differ from the sender address</li>
+                        <li><strong>View email headers:</strong> Headers show the actual routing information</li>
+                        <li><strong>Be wary of free email services:</strong> Legitimate businesses rarely use Gmail or Yahoo for official communications</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Domain Spoofing Techniques</h4>
+                        <p>Attackers use various techniques to create deceptive domains:
+                        <br>- Homograph attacks: Using similar-looking characters (e.g., "rnicrosoft.com" vs "microsoft.com")
+                        <br>- Subdomain deception: "microsoft.security-alert.com" appears legitimate at first glance
+                        <br>- Top-level domain variations: "amazon.co" instead of "amazon.com"</p>
+                    </div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which sender email address is the fake one?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">support@microsoft-security.com</div>
+                        <div class="option" data-correct="false">support@microsoft.com</div>
+                        <div class="option" data-correct="false">noreply@email.microsoft.com</div>
+                    </div>
+                    <div class="feedback correct">Correct! The official domain is `microsoft.com`. Scammers create similar-looking domains to trick you.</div>
+                    <div class="feedback incorrect">Incorrect. The key is the main domain. `microsoft-security.com` is not owned by Microsoft.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">An email's display name is "Your Boss", but the address is "user123@gmail.com". What should you conclude?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Your boss is probably sending from their personal account.</div>
+                        <div class="option" data-correct="false">It's safe because the display name looks correct.</div>
+                        <div class="option" data-correct="true">This is highly suspicious and likely a phishing attempt.</div>
+                    </div>
+                    <div class="feedback correct">Correct! The display name is easily faked. The email address is the real clue, and it's unlikely your boss would use a generic personal email for official business.</div>
+                    <div class="feedback incorrect">Incorrect. Always trust the email address, not the display name.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+<!-- Task 6 -->
+        <div class="task locked" id="task6" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>The Link Hover Test</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Inspecting Links Before Clicking</h3>
+                    <p>The text of a link can say anything, but the destination URL can be completely different. Always inspect links before clicking to avoid being directed to malicious websites.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://blog.lmttech.com/hubfs/Hover%20Over%20Link%20in%20Email.png" alt="How to hover over links">
+                        <div class="caption">Hover over links to see the actual destination URL</div>
+                    </div>
+                    
+                    <h4>How to Inspect Links Safely:</h4>
+                    <ul>
+                        <li><strong>Hover before clicking:</strong> On desktop, hover your mouse over the link to see the URL</li>
+                        <li><strong>Check for HTTPS:</strong> Ensure the URL begins with "https://" for secure connections</li>
+                        <li><strong>Examine the domain name:</strong> Look for misspellings or unusual characters</li>
+                        <li><strong>Be cautious of URL shorteners:</strong> Services like bit.ly can hide malicious destinations</li>
+                        <li><strong>Use link scanners:</strong> Browser extensions can automatically check links for safety</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>URL Deconstruction</h4>
+                        <p>Understanding URL structure helps identify fakes:
+                        <br>- Protocol: https:// (secure) vs http:// (insecure)
+                        <br>- Domain: paypal.com (legitimate) vs paypa1.com (fake)
+                        <br>- Subdomain: login.paypal.com (legitimate) vs paypal.login-security.com (fake)
+                        <br>- Path: /account/login (typical) vs /secure-login (suspicious)</p>
+                    </div>
+                    
+                    <h4>Mobile Considerations:</h4>
+                    <p>On mobile devices, it's harder to hover over links. Instead:</p>
+                    <ol>
+                        <li>Long-press on the link to see the URL before opening</li>
+                        <li>Use official apps instead of clicking links in emails</li>
+                        <li>When in doubt, manually type the website address</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">A link says "google.com", but hovering shows "http://g00gle.account-update.com". Is it safe?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Yes, the text says it's Google.</div>
+                        <div class="option" data-correct="true">No, the actual URL is different and suspicious.</div>
+                        <div class="option" data-correct="false">It's probably just a redirect.</div>
+                    </div>
+                    <div class="feedback correct">Correct! The actual URL is the only thing that matters, and this one is clearly not the real Google.</div>
+                    <div class="feedback incorrect">Incorrect. Always trust the hover URL, not the displayed text.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">In the URL "https://yourbank.com.secure.login.net/signin", what is the true domain?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">yourbank.com</div>
+                        <div class="option" data-correct="true">login.net</div>
+                        <div class="option" data-correct="false">secure.login.net</div>
+                    </div>
+                    <div class="feedback correct">Correct! The true domain is the part just before the `.com`, `.net`, etc. The rest are subdomains designed to confuse you.</div>
+                    <div class="feedback incorrect">Incorrect. Attackers use subdomains to make a URL look legitimate. The real domain is at the very end.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 7 -->
+        <div class="task locked" id="task7" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Social Media Scams</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Social Media Phishing Threats</h3>
+                    <p>Social media platforms have become fertile ground for phishing attacks. Scammers use fake profiles, malicious links, and deceptive messages to trick users into revealing sensitive information.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Social media phishing examples">
+                        <div class="caption">Social media platforms are increasingly targeted by phishers</div>
+                    </div>
+                    
+                    <h4>Common Social Media Scams:</h4>
+                    <ul>
+                        <li><strong>Fake giveaway offers:</strong> "You've won a prize! Click here to claim"</li>
+                        <li><strong>Profile cloning:</strong> Scammers create copies of your friends' profiles</li>
+                        <li><strong>Malicious ads:</strong> Ads promoting fake products or services</li>
+                        <li><strong>Fake customer support:</strong> Impersonating company support accounts</li>
+                        <li><strong>Quiz scams:</strong> "Answer these questions to find out which character you are"</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Profile Cloning</h4>
+                        <p>In profile cloning attacks, scammers copy profile pictures and information from legitimate accounts to create convincing fakes. They then send friend requests to the original account's contacts, often followed by messages requesting money or personal information.</p>
+                    </div>
+                    
+                    <h4>Protecting Yourself on Social Media:</h4>
+                    <ol>
+                        <li>Adjust privacy settings to limit who can see your information</li>
+                        <li>Be cautious of unsolicited messages, even from friends</li>
+                        <li>Verify unusual requests through another communication channel</li>
+                        <li>Don't overshare personal information that could be used in targeted attacks</li>
+                        <li>Use different passwords for social media accounts</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which social media message is most likely a scam?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">A message from a verified friend about weekend plans.</div>
+                        <div class="option" data-correct="true">A message from a stranger saying you won a prize and need to pay a fee to claim it.</div>
+                        <div class="option" data-correct="false">A comment on one of your public posts.</div>
+                    </div>
+                    <div class="feedback correct">Correct! This is a classic advance-fee scam. Legitimate prizes don't require payment.</div>
+                    <div class="feedback incorrect">Incorrect. Unsolicited messages about winning money are almost always scams.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">You get a friend request from someone you're already friends with. The new profile has very few photos or friends. What is this?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">A cloned account, likely made by a scammer to trick you and your friends.</div>
+                        <div class="option" data-correct="false">Your friend probably just made a new account and forgot to add everyone.</div>
+                        <div class="option" data-correct="false">A temporary bug in the social media platform.</div>
+                    </div>
+                    <div class="feedback correct">Correct! This is a common tactic called profile cloning. The scammer will likely send messages asking for money or links to viruses.</div>
+                    <div class="feedback incorrect">Incorrect. While possible, the most likely scenario is that it's a scam attempt.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Task 8 -->
+        <div class="task locked" id="task8" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Spear Phishing</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Targeted Spear Phishing Attacks</h3>
+                    <p>Spear phishing is a highly targeted form of phishing where attackers research specific individuals or organizations to create personalized, convincing messages that are more likely to succeed.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://firewalltimes.com/wp-content/uploads/2020/09/image-8.png" alt="Spear phishing example">
+                        <div class="caption">Spear phishing emails are personalized and often reference real colleagues or projects</div>
+                    </div>
+                    
+                    <h4>Characteristics of Spear Phishing:</h4>
+                    <ul>
+                        <li><strong>Personalized content:</strong> Uses your name, position, or other specific details</li>
+                        <li><strong>Apparent legitimacy:</strong> Appears to come from someone you know or trust</li>
+                        <li><strong>Research-based:</strong> References real projects, events, or colleagues</li>
+                        <li><strong>Higher quality:</strong> Better writing and design than generic phishing</li>
+                        <li><strong>Specific goals:</strong> Often aims to steal sensitive data or financial information</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Whaling Attacks</h4>
+                        <p>"Whaling" is a type of spear phishing that specifically targets high-level executives. These attacks are particularly sophisticated and may involve extensive research to create convincing messages that appear to come from other executives or trusted partners.</p>
+                    </div>
+                    
+                    <h4>Defending Against Spear Phishing:</h4>
+                    <ol>
+                        <li>Be skeptical of unexpected requests, even from known contacts</li>
+                        <li>Verify unusual requests through a separate communication channel</li>
+                        <li>Limit the amount of personal information you share online</li>
+                        <li>Implement multi-factor authentication for sensitive accounts</li>
+                        <li>Provide regular security awareness training for employees</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which email is the best example of spear phishing?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">An email from your "boss", referencing a project you're on, asking you to wire money.</div>
+                        <div class="option" data-correct="false">A generic newsletter you subscribed to.</div>
+                        <div class="option" data-correct="false">A mass email announcing a 20% off sale.</div>
+                    </div>
+                    <div class="feedback correct">Correct! This is highly personalized and asks for a high-risk action.</div>
+                    <div class="feedback incorrect">Incorrect. Spear phishing is defined by its personalization.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">Why is spear phishing often more dangerous than regular phishing?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">It always contains a virus in the attachment.</div>
+                        <div class="option" data-correct="true">The personalization makes it harder to spot and more believable.</div>
+                        <div class="option" data-correct="false">It can only be done by highly advanced government hackers.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Because it uses details specific to you, it bypasses the "this seems generic" red flag, making it much more effective.</div>
+                    <div class="feedback incorrect">Incorrect. Its danger comes from its believability due to personalization.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 9 -->
+        <div class="task locked" id="task9" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Phone & SMS Phishing (Vishing/Smishing)</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Voice and SMS Phishing</h3>
+                    <p>Phishing isn't limited to email. "Vishing" (voice phishing) uses phone calls, while "Smishing" (SMS phishing) uses text messages to trick victims into revealing sensitive information.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://timely-benefit-e63d540317.media.strapiapp.com/Picture_1_Phishing_vs_Vishing_vs_Smishing_Key_Differences_a2c88f0733.jpg" alt="Vishing and smishing examples">
+                        <div class="caption">Phone-based phishing attempts are becoming increasingly common</div>
+                    </div>
+                    
+                    <h4>Common Vishing and Smishing Tactics:</h4>
+                    <ul>
+                        <li><strong>Impersonation:</strong> Posing as banks, government agencies, or tech support</li>
+                        <li><strong>Urgent requests:</strong> Claiming your account is compromised and immediate action is needed</li>
+                        <li><strong>Fake verification:</strong> Asking you to verify account details or passwords</li>
+                        <li><strong>Prize scams:</strong> Notifying you of a prize you've won with a link to claim it</li>
+                        <li><strong>Two-factor authentication bypass:</strong> Tricking you into providing verification codes</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Caller ID Spoofing</h4>
+                        <p>Vishers often spoof caller ID information to make calls appear to come from legitimate organizations. They can make it look like the call is coming from your bank's official number, making the scam more convincing.</p>
+                    </div>
+                    
+                    <h4>Protecting Against Phone-Based Phishing:</h4>
+                    <ol>
+                        <li>Be skeptical of unsolicited calls or texts, even if they appear to come from legitimate numbers</li>
+                        <li>Never provide sensitive information over the phone unless you initiated the call</li>
+                        <li>Hang up and call the organization back using an official number from their website</li>
+                        <li>Don't respond to suspicious texts; delete them immediately</li>
+                        <li>Register your number on the National Do Not Call Registry to reduce unsolicited calls</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">Which is an example of smishing?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">A phone call from your bank asking to verify a recent purchase.</div>
+                        <div class="option" data-correct="true">A text saying "Your package delivery failed. Click here: [suspicious link]".</div>
+                        <div class="option" data-correct="false">A confirmation text for a doctor's appointment.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Unsolicited texts with strange links are a very common form of smishing.</div>
+                    <div class="feedback incorrect">Incorrect. Smishing refers specifically to phishing via SMS (text message).</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">You get an automated call saying your Social Security Number has been compromised and you must press 1 to speak to an agent. This is likely:</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">A vishing (voice phishing) scam to try and steal your personal information.</div>
+                        <div class="option" data-correct="false">A legitimate call from the Social Security Administration.</div>
+                        <div class="option" data-correct="false">A wrong number.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Government agencies will not contact you with threatening automated calls. This is a common vishing tactic.</div>
+                    <div class="feedback incorrect">Incorrect. This is a well-known phone scam. Government agencies typically communicate via official mail.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Task 10 -->
+        <div class="task locked" id="task10" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>Reporting & Prevention</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>Reporting Phishing Attempts</h3>
+                    <p>Reporting phishing attempts is crucial for protecting yourself and others. Your reports help security companies and service providers identify new threats and improve their filters.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://infosec.ucf.edu/wp-content/uploads/sites/2/2019/08/pabv2-outlook-desktop-1.jpg" alt="Reporting phishing attempts">
+                        <div class="caption">Reporting phishing helps protect the wider community</div>
+                    </div>
+                    
+                    <h4>How to Report Phishing:</h4>
+                    <ul>
+                        <li><strong>Email providers:</strong> Use the "Report Phishing" or "Report Spam" button</li>
+                        <li><strong>Forward emails:</strong> Send phishing emails to reportphishing@apwg.org</li>
+                        <li><strong>Government agencies:</strong> Report to the FTC at reportfraud.ftc.gov</li>
+                        <li><strong>Financial institutions:</strong> Forward bank-related phishing to the institution's fraud department</li>
+                        <li><strong>Social media platforms:</strong> Use reporting features on social media sites</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Why Reporting Matters</h4>
+                        <p>When you report phishing attempts, you're contributing to a collective defense system. Security companies analyze reported phishing messages to identify new tactics, update filters, and sometimes even track down and disrupt phishing operations.</p>
+                    </div>
+                    
+                    <h4>Proactive Prevention Measures:</h4>
+                    <ol>
+                        <li>Use comprehensive security software with anti-phishing protection</li>
+                        <li>Keep all software updated to patch security vulnerabilities</li>
+                        <li>Enable multi-factor authentication on all important accounts</li>
+                        <li>Regularly back up important data to mitigate ransomware threats</li>
+                        <li>Educate yourself and others about the latest phishing techniques</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">What is the correct action if you receive a phishing email?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Click the link to see what happens.</div>
+                        <div class="option" data-correct="false">Reply asking them to stop.</div>
+                        <div class="option" data-correct="true">Report it as phishing/spam and then delete it.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Never interact. The safest and most helpful action is to report then delete.</div>
+                    <div class="feedback incorrect">Incorrect. Interacting in any way can confirm your email is active to attackers.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">Why is it important to report phishing attempts?</div>
+                    <div class="options">
+                        <div class="option" data-correct="true">It helps train filters to block similar messages for you and others in the future.</div>
+                        <div class="option" data-correct="false">It immediately traces the scammer and alerts the police.</div>
+                        <div class="option" data-correct="false">It adds your name to a "do not phish" list.</div>
+                    </div>
+                    <div class="feedback correct">Correct! Your report is valuable data that helps email providers and security companies recognize and block new threats.</div>
+                    <div class="feedback incorrect">Incorrect. While it may contribute to larger investigations, the immediate benefit is improving automated security filters.</div>
+                </div>
+                <button class="btn btn-next" disabled>Next Task <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <!-- Task 11: Recap Task -->
+        <div class="task locked" id="task11" data-questions-total="2" data-questions-answered="0">
+            <div class="task-header">
+                <span>The Golden Rule of Cybersecurity</span>
+                <span class="task-status"><span class="locked-badge">Locked</span></span>
+            </div>
+            <div class="task-content">
+                <div class="learning-content">
+                    <h3>The Human Firewall</h3>
+                    <p>Ultimately, the most effective defense against phishing is you. Technology can provide important safeguards, but human vigilance and skepticism are the final line of defense.</p>
+                    
+                    <div class="img-container">
+                        <img src="https://fastercapital.com/i/And-Sinker--Protecting-Yourself-from-Phishing-Scams-and-Fraud--Staying-Informed-and-Up-to-Date-on-Phishing-Scams.webp" alt="Cybersecurity awareness">
+                        <div class="caption">Staying informed is your best defense against phishing</div>
+                    </div>
+                    
+                    <h4>The Golden Rules of Cybersecurity:</h4>
+                    <ul>
+                        <li><strong>Think before you click:</strong> Always verify before interacting with links or attachments</li>
+                        <li><strong>Verify requests:</strong> Confirm unusual requests through a separate channel</li>
+                        <li><strong>Stay informed:</strong> Keep up with the latest phishing techniques and scams</li>
+                        <li><strong>Use technology:</strong> Enable security features like multi-factor authentication</li>
+                        <li><strong>Trust your instincts:</strong> If something feels wrong, it probably is</li>
+                    </ul>
+                    
+                    <div class="key-point">
+                        <h4>Continuous Learning</h4>
+                        <p>Phishing tactics constantly evolve, so ongoing education is essential. Regular security awareness training can reduce successful phishing attacks by up to 70% according to recent studies.</p>
+                    </div>
+                    
+                    <h4>Building a Security-Conscious Mindset:</h4>
+                    <ol>
+                        <li>Make security part of your daily routine, not an afterthought</li>
+                        <li>Share knowledge with friends, family, and colleagues</li>
+                        <li>Participate in security awareness programs when available</li>
+                        <li>Stay curious about new technologies and their security implications</li>
+                        <li>Remember that everyone makes mistakes - what matters is learning from them</li>
+                    </ol>
+                </div>
+                
+                <div class="quiz">
+                    <div class="question">What is the single most important mindset for defending against phishing?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Responding to every email as quickly as possible.</div>
+                        <div class="option" data-correct="false">Trusting any email that uses my name or personal details.</div>
+                        <div class="option" data-correct="true">Maintaining a healthy skepticism and verifying requests before acting.</div>
+                    </div>
+                    <div class="feedback correct">Exactly! The core of cybersecurity is to "trust, but verify."</div>
+                    <div class="feedback incorrect">Not quite. Speed and personalization are tools that attackers use against you.</div>
+                </div>
+                <div class="quiz">
+                    <div class="question">When in doubt about a message or link, what is the best thing to do?</div>
+                    <div class="options">
+                        <div class="option" data-correct="false">Click it to see if your antivirus catches anything.</div>
+                        <div class="option" data-correct="true">Don't click it. Delete the message or find the official website yourself via a search engine.</div>
+                        <div class="option" data-correct="false">Forward it to a friend to see what they think.</div>
+                    </div>
+                    <div class="feedback correct">Correct! The safest action is no action. Never click a suspicious link. Always navigate to sites directly.</div>
+                    <div class="feedback incorrect">Incorrect. Never "test" a suspicious link, and don't spread potential phishing by forwarding it.</div>
+                </div>
+                <button class="btn btn-next" disabled>Finish <i class="fas fa-flag-checkered"></i></button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 INSA Center for Cybersecurity Education. All rights reserved.
+</footer>
+
+<!-- Custom Notification/Alert System -->
+<div id="custom-alert-overlay" class="hidden">
+    <div id="custom-alert-box">
+        <h3 id="custom-alert-title"></h3>
+        <p id="custom-alert-message"></p>
+        <button id="custom-alert-close">Close</button>
+    </div>
+</div>
+
+</body>
+</html>

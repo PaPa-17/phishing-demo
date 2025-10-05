@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "html2canvas": "^1.4.1",
-    "jspdf": "^3.0.3",
     "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

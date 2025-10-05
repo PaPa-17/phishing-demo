@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, ShieldCheck, ShieldAlert, FileText, Clock, AlertTriangle, Search, ChevronRight, Download, BarChart2, List, ServerCrash } from 'lucide-react';
+import { Shield, ShieldCheck, ShieldAlert, FileText, Clock, AlertTriangle, Search, ChevronRight, Download, BarChart2, List, ServerCrash, BookOpen } from 'lucide-react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import ReactDOM from 'react-dom';
 
 // --- API CONFIGURATION --- //
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -45,56 +46,78 @@ const fetchReport = async (id) => {
 };
 
 // --- PDF Generation Helper --- //
-const generatePDF = async (report) => {
+const generatePDF = async (report, isHistoryExport = false) => {
     if (!report) return;
 
-    // Temporarily render the report in a hidden div for capture
-    const printWindow = window.open('', '_blank');
-    printWindow.document.write(`
-        <html>
-            <head><title>PhishGuard Report</title></head>
-            <body style="margin: 0; padding: 20px; font-family: sans-serif; background: #1f2937; color: #f9fafb;">
-                ${printWindow.document.createElement('div').outerHTML}  // We'll inject the report here via React render, but for simplicity, we'll use html2canvas on the main app
-            </body>
-        </html>
-    `);
-    // For better accuracy, we'll capture from the app's report div
-    const reportElement = document.getElementById('report-content');
-    if (!reportElement) return;
+    let reportElement;
+    if (isHistoryExport) {
+        // For History export, temporarily render in a hidden div
+        const tempDiv = document.createElement('div');
+        tempDiv.id = 'report-content';
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.left = '-9999px';
+        tempDiv.style.top = 0;
+        tempDiv.style.width = '1200px'; // Wider fixed width to prevent wrapping and cutoff
+        tempDiv.style.height = 'auto'; // Allow full height
+        tempDiv.style.padding = '20px'; // Match app padding
+        document.body.appendChild(tempDiv);
+        ReactDOM.render(<ReportPage report={report} />, tempDiv);
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Longer timeout for complete render, including SVGs
+        reportElement = tempDiv;
+    } else {
+        // For Report page, use the visible element
+        reportElement = document.getElementById('report-content');
+        if (!reportElement) {
+            console.error('Report element not found');
+            alert('Please view the report first to export.');
+            return;
+        }
+    }
 
     try {
         const canvas = await html2canvas(reportElement, {
-            scale: 2,  // Higher resolution
+            scale: 1.5, // Balanced resolution to avoid blurriness or large files
             useCORS: true,
-            backgroundColor: '#1f2937',  // Match your app's bg-gray-900
-            width: reportElement.scrollWidth,
-            height: reportElement.scrollHeight,
+            backgroundColor: '#1f2937', // Match bg-gray-900
+            width: reportElement.offsetWidth,
+            height: reportElement.offsetHeight + 100, // Extra buffer for cutoff
+            windowWidth: 1200, // Match temp width
+            windowHeight: reportElement.scrollHeight + 100, // Full scroll height
+            foreignObjectRendering: true,
+            allowTaint: true,
+            logging: true, // For console debug
+            scrollX: 0,
+            scrollY: -window.scrollY, // Handle any scroll position
         });
 
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');  // Portrait, mm units, A4 size
-        const imgWidth = 210;  // A4 width in mm
-        const pageHeight = 295;  // A4 height in mm
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pdfWidth - 20; // Margins for better fit
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
+        let positionY = 0;
 
-        let position = 0;
+        pdf.addImage(imgData, 'PNG', 10, positionY, imgWidth, imgHeight); // 10mm left margin
+        heightLeft -= pdfHeight;
 
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-
-        // Handle multi-page if the report is long
-        while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
+        while (heightLeft > 0) {
             pdf.addPage();
-            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
+            positionY = - (imgHeight - heightLeft); // Correct offset for remaining content
+            pdf.addImage(imgData, 'PNG', 10, positionY, imgWidth, imgHeight);
+            heightLeft -= pdfHeight;
         }
 
         pdf.save(`phishguard-report-${report.url.replace(/[^a-z0-9]/gi, '_')}.pdf`);
     } catch (error) {
         console.error('PDF generation failed:', error);
-        alert('Failed to generate PDF. Please try again.');
+        alert('Failed to generate PDF. Check console for details.');
+    } finally {
+        if (isHistoryExport && reportElement) {
+            ReactDOM.unmountComponentAtNode(reportElement);
+            document.body.removeChild(reportElement);
+        }
     }
 };
 
@@ -103,11 +126,12 @@ const Header = ({ setPage }) => (
     <header className="bg-gray-800/50 backdrop-blur-sm sticky top-0 z-30 w-full p-4 border-b border-gray-700 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => setPage('home')}>
             <ShieldCheck className="w-8 h-8 text-emerald-400" />
-            <h1 className="text-xl font-bold text-gray-100 hidden sm:block">PhishGuard</h1>
+            <h1 className="text-xl font-bold text-gray-100 hidden sm:block">Phishguard</h1>
         </div>
         <nav className="flex items-center gap-4">
             <button onClick={() => setPage('home')} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Search className="w-5 h-5"/>Analyze</button>
             <button onClick={() => setPage('history')} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><Clock className="w-5 h-5"/>History</button>
+            <button onClick={() => window.location.href = '/aware-main/index.html'} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"><BookOpen />Learn</button> 
         </nav>
     </header>
 );
@@ -237,6 +261,7 @@ const ReportPage = ({ report }) => {
         <div id="report-content" className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-100 mb-1">Analysis Report</h2>
             <p className="text-gray-400 mb-6 break-all">For URL: <span className="font-mono text-emerald-400">{report.url}</span></p>
+            <button onClick={() => generatePDF(report)} className="mb-4 bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600">Export PDF</button>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-1 flex flex-col gap-6">
@@ -287,7 +312,6 @@ const HistoryPage = ({ setPage, setReport }) => {
     const [history, setHistory] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [tempReport, setTempReport] = useState(null);  // For rendering report during export
 
     useEffect(() => {
         const fetchHistory = async () => {
@@ -318,9 +342,7 @@ const HistoryPage = ({ setPage, setReport }) => {
     const handleExportPdf = async (id) => {
         try {
             const reportData = await fetchReport(id);
-            setTempReport(reportData);  // Temporarily set to render the report
-            await generatePDF(reportData);  // Generate and download
-            setTempReport(null);  // Clear temp
+            await generatePDF(reportData, true); // true indicates History export
         } catch (err) {
             console.error('Export failed:', err);
             alert('Failed to export PDF.');
@@ -368,17 +390,12 @@ const HistoryPage = ({ setPage, setReport }) => {
                     </div>
                 </div>
             )}
-            {/* Hidden temp report for export capture */}
-            {tempReport && (
-                <div id="report-content" style={{ position: 'absolute', left: '-9999px', top: 0, visibility: 'hidden' }}>
-                    <ReportPage report={tempReport} />
-                </div>
-            )}
         </div>
     );
 };
 
 // --- Main App Component --- //
+
 export default function App() {
     const [page, setPage] = useState('home'); 
     const [report, setReport] = useState(null);

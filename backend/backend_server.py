@@ -27,7 +27,7 @@ def perform_mock_analysis(url):
     flags = []
 
     # Rule 1: Check for suspicious keywords
-    suspicious_keywords = ['login', 'secure', 'account', 'update', 'verify', 'bank', 'password' , 'trusted']
+    suspicious_keywords = ['login', 'secure', 'account', 'update', 'verify', 'bank', 'password' , 'trusted' , 'confirm', 'signin', 'click', 'urgent', 'alert', 'security']
     keyword_found = False
     for keyword in suspicious_keywords:
         if keyword in url.lower():
