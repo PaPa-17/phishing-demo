@@ -27,7 +27,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px; /* Increased from 900px to make the page wider */
     margin: 0 auto;
     padding: 20px;
 }

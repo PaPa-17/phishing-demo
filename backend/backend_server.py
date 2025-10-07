@@ -86,12 +86,12 @@ def perform_mock_analysis(url):
         risk_score = random.randint(5, 15)
         
     # Generate recommendation based on score and number of flags
-    if risk_score >= 90 or len(flags) > 1:
+    if risk_score >= 90:
         recommendation = 'CRITICAL RISK DETECTED! This site is highly suspicious and likely malicious. DO NOT PROCEED under any circumstances!'
-    elif risk_score > 75:
+    elif risk_score > 75 and risk_score < 90:
         recommendation = 'High risk detected. Do not proceed.'
-    elif risk_score > 40:
-        recommendation = 'Moderate risk. Proceed with extreme caution.'
+    elif risk_score > 40 and risk_score <= 75:
+        recommendation = 'Moderate risk. Proceed with high caution.'
     else:
         recommendation = 'Low risk detected. Appears to be safe.'
 
